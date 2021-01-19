@@ -18,11 +18,45 @@ footer: Made by Fikayo Adepoju with ❤️
 
 {{message}}
 
+<p v-if="user">{{user.given_name}} {{user.family_name}}</p>
+
+<template>
+  <LoginButton v-if="!user" :client="auth0client" @login-complete="getUser()" />
+  <LogoutButton v-else :client="auth0client" />
+</template>
+
 <script>
+import auth from "./.vuepress/auth";
+import LoginButton from "./.vuepress/components/LoginButton";
+import LogoutButton from "./.vuepress/components/LogoutButton";
+
+
 export default {
   data() {
     return {
-      message: "Hey, this is dynamic"
+      message: "Hey, this is dynamic",
+      auth0client : null,
+      loginButton: null,
+      user : null
+    }
+  },
+
+  async mounted(){
+    this.auth0client = await auth.createClient();
+    console.log(this.auth0client);
+
+    this.user = await this.auth0client.getUser();
+    console.log(this.user);
+    
+  },
+
+  methods : {
+    async login () {
+      await auth.loginWithPopup(this.auth0client);
+    },
+    async getUser(){
+      this.user = await this.auth0client.getUser();
+      console.log(this.user);
     }
   }
 }

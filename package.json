@@ -17,6 +17,6 @@
     "vuepress": "^1.5.3"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.13.6"
+    "@auth0/auth0-spa-js": "1.13.2"
   }
 }
