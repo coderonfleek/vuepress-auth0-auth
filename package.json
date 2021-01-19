@@ -1,0 +1,22 @@
+{
+  "name": "vuepress-app",
+  "version": "0.0.1",
+  "description": "A sample App for Authentication with Auth0",
+  "main": "index.js",
+  "authors": {
+    "name": "Fikayo Adepoju",
+    "email": "fikfikky@gmail.com"
+  },
+  "repository": "vuepress-app/vuepress-app",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  },
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.13.6"
+  }
+}
