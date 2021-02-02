@@ -1,28 +1,29 @@
 ---
 home: true
-heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: A sample App for Authentication with Auth0
-actionText: Quick Start →
-actionLink: /guide/
-features:
-  - title: Feature 1 Title
-    details: Feature 1 Description
-  - title: Feature 2 Title
-    details: Feature 2 Description
-  - title: Feature 3 Title
-    details: Feature 3 Description
-footer: Made by Fikayo Adepoju with ❤️
+footer: Made by Auth0 User with ❤️
 ---
 
-## Getting Started
-
-{{message}}
-
-<p v-if="user">{{user.given_name}} {{user.family_name}}</p>
-
 <template>
-  <LoginButton v-if="!user" :client="auth0client" @login-complete="getUser()" />
-  <LogoutButton v-else :client="auth0client" />
+  <div class="main-content">
+    <div v-if="user">
+      <p align="center">
+        Hi {{user.given_name}} {{user.family_name}}, Welcome to the Vuepress Blog
+      </p>
+      <p align="center">
+        <LogoutButton :client="auth0client" />
+      </p>
+    </div>
+    <div v-else>
+      <p align="center">
+        You are currently not logged-in to the Application. Please use the login button below to sign in
+      </p>
+      <p align="center">
+        <LoginButton :client="auth0client" @login-complete="getUser()" />
+      </p>
+    </div>
+  </div>
+  
+  
 </template>
 
 <script>
@@ -34,7 +35,7 @@ import LogoutButton from "./.vuepress/components/LogoutButton";
 export default {
   data() {
     return {
-      message: "Hey, this is dynamic",
+      
       auth0client : null,
       loginButton: null,
       user : null
@@ -61,3 +62,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.main-content{
+  text-align: "center"
+}
+</style>
