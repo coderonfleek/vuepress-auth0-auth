@@ -4,11 +4,9 @@
 
 ## Prerequisites
 
-## Creating the Auth0 Project
+## Creating the Auth0 Application
 
 ## Scaffolding the Vuepress project
-
-## Creating the Auth0 App
 
 ## Setting up Authentication with Auth0
 
